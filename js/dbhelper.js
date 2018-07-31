@@ -152,4 +152,8 @@ class DBHelper {
         return marker;
     }
 
+    static changeFavState(restaurant) {
+            
+    }
+
 }

@@ -1,4 +1,4 @@
-let restaurants,
+﻿let restaurants,
     neighborhoods,
     cuisines;
 var map;
@@ -172,11 +172,26 @@ createRestaurantHTML = (restaurant) => {
     /** Create Button with more details: */
     const moreButton = document.createElement('button');
     moreButton.innerHTML = 'View Details';
+    moreButton.className = 'det_button';
     moreButton.onclick = function () {
         const url = DBHelper.urlForRestaurant(restaurant);
         window.location = url;
     };
     divElement.append(moreButton);
+
+    /** Append the favorite icon */
+    const favicon = document.createElement('button');
+    favicon.innerHTML = '♥';
+    if (restaurant.is_favorite) {
+        favicon.className = 'fav_button';
+    }
+    else {
+        favicon.className = 'nonfav_button';
+    }
+    moreButton.onclick = function () { 
+        DBHelper.changeFavState(restaurant);
+    };
+    divElement.append(favicon);
 
     return divElement;
 };
