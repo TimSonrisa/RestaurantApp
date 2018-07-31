@@ -152,8 +152,9 @@ class DBHelper {
         return marker;
     }
 
-    static changeFavState(restaurant) {
-            
+    static changeFavState(restaurant, newfavState) {
+        let url = `http://localhost:1337/restaurants/${restaurant.id}/?is_favorite=${newfavState}`;
+        fetch(url, {method: 'PUT' });
     }
 
 }

@@ -180,18 +180,28 @@ createRestaurantHTML = (restaurant) => {
     divElement.append(moreButton);
 
     /** Append the favorite icon */
-    const favicon = document.createElement('button');
-    favicon.innerHTML = '♥';
-    if (restaurant.is_favorite) {
-        favicon.className = 'fav_button';
+    const favButton = document.createElement('button');
+    favButton.innerHTML = '♥';
+    favButton.className = 'nonfav_button';
+    if (restaurant.is_favorite=="true") {
+        favButton.className = 'fav_button';
     }
-    else {
-        favicon.className = 'nonfav_button';
-    }
-    moreButton.onclick = function () { 
-        DBHelper.changeFavState(restaurant);
+
+    favButton.onclick = function () {
+        let newState = "true";
+        if (restaurant.is_favorite == "true") {
+            newState = "false";
+        }
+        DBHelper.changeFavState(restaurant, newState);
+        restaurant.is_favorite = newState;
+        if (newState == "true") {
+            this.className = 'fav_button';
+        }
+        else {
+            this.className = 'nonfav_button';
+        }
     };
-    divElement.append(favicon);
+    divElement.append(favButton);
 
     return divElement;
 };
