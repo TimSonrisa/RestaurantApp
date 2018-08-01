@@ -261,7 +261,8 @@ nav {
 }
 
 #restaurant-name {
-    color: #f18200;
+    background-color: #333;
+    color: #ddd;
     font-family: Arial,sans-serif;
     font-size: 20pt;
     font-weight: 200;
@@ -269,7 +270,9 @@ nav {
     text-transform: uppercase;
     line-height: 1.1;
     padding: 15%, 0, 15%, 0;
+    margin: 3% 0 0 0;
     text-align: center;
+    width: 80%;
 }
 
 #restaurant-img {
@@ -292,7 +295,7 @@ nav {
     padding: 2px 0;
     text-align: center;
     text-transform: uppercase;
-    width: 100%;
+    width: 80%;
 }
 
 #restaurant-container {

@@ -61,28 +61,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
     const image = document.getElementById('restaurant-img');
     image.className = 'restaurant-img';
 
-    const favButton = document.getElementById('fav_button_res');
-    favButton.innerHTML = '♥';
-    favButton.className = 'nonfav_button';
-    if (restaurant.is_favorite == "true") {
-        favButton.className = 'fav_button';
-    }
-
-    favButton.onclick = function () {
-        let newState = "true";
-        if (restaurant.is_favorite == "true") {
-            newState = "false";
-        }
-        DBHelper.changeFavState(restaurant, newState);
-        restaurant.is_favorite = newState;
-        if (newState == "true") {
-            this.className = 'fav_button';
-        }
-        else {
-            this.className = 'nonfav_button';
-        }
-    };
-
     const imgNameOrig = DBHelper.imageUrlForRestaurant(restaurant).replace('/img/', '/img/details/');
     const imgParts = imgNameOrig.split('.');
 
@@ -161,19 +139,20 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 createReviewHTML = (review) => {
     const li = document.createElement('li');
     const name = document.createElement('p');
-    name.innerHTML = review.name;
+    name.innerHTML = `🙎: ${review.name}`;
     li.appendChild(name);
 
     const date = document.createElement('p');
-    date.innerHTML = `Date: ${new Date(review.createdAt).toLocaleString()}`;
+    date.innerHTML = `📅: ${new Date(review.createdAt).toLocaleString()}`;
     li.appendChild(date);
 
     const rating = document.createElement('p');
-    rating.innerHTML = `Rating: ${review.rating}`;
+    const nStars = review.rating;
+    rating.innerHTML = `★`.repeat(nStars);
     li.appendChild(rating);
 
     const comments = document.createElement('p');
-    comments.innerHTML = review.comments;
+    comments.innerHTML = `<br>` + review.comments;
     li.appendChild(comments);
 
     return li;
