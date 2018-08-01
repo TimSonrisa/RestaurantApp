@@ -29,6 +29,24 @@ class DBHelper {
             .catch(e => callback(e, null));
     }
 
+    static addNewReview(id, review) {
+        let reviewSend = {
+            "name": review.name,
+            "rating": parseInt(review.rating),
+            "comments": review.comments,
+            "restaurant_id": parseInt(review.restaurant_id)
+        };
+
+        return fetch(DBHelper.DATABASE_URL + `/reviews/`,
+            {
+                method: 'POST',
+                body: JSON.stringify(reviewSend),
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                })
+            })
+    }
+
     /**
      * Fetch restaurants by a cuisine type with proper error handling.
      */

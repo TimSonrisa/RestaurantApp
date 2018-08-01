@@ -130,6 +130,20 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     submitButton.onclick = function () {
         event.preventDefault();
         console.log('Submitting New Custom Review')
+
+        newReview = {
+            "id": 8,
+            "restaurant_id": self.restaurant.id,
+            "name": document.getElementById('review-name').value,
+            "createdAt": Date.now(),
+            "updatedAt": Date.now(),
+            "rating": document.getElementById('review-rating').value,
+            "comments": document.getElementById('review-text').value
+        };
+        const ul = document.getElementById('reviews-list');
+        ul.appendChild(createReviewHTML(newReview))
+        console.log(name)
+        DBHelper.addNewReview(self.restaurant.id, newReview);
     }
 }
 
