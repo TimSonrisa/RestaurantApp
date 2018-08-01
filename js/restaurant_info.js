@@ -85,8 +85,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
         } else {
             fillReviewsHTML(reviews);
         }
-    });
-    
+    });   
 }
 
 /**
@@ -115,10 +114,6 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
     
     const container = document.getElementById('reviews-container');
-    const title = document.createElement('h3');
-    title.innerHTML = 'Reviews';
-    container.appendChild(title);
-
     if (!reviews) {
         const noReviews = document.createElement('p');
         noReviews.innerHTML = 'No reviews yet!';
@@ -130,6 +125,12 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
         ul.appendChild(createReviewHTML(review));
     });
     container.appendChild(ul);
+
+    const submitButton = document.getElementById('submitButton');
+    submitButton.onclick = function () {
+        event.preventDefault();
+        console.log('Submitting New Custom Review')
+    }
 }
 
 
