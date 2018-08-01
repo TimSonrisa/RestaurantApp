@@ -5,30 +5,28 @@ class DBHelper {
 
     static get DATABASE_URL() {
         const port = 1337;
-        return `http://localhost:${port}/restaurants`;
+        return `http://localhost:${port}`;
     }
 
     static fetchRestaurants(callback) {
-        fetch(DBHelper.DATABASE_URL)
+        fetch(DBHelper.DATABASE_URL + `/restaurants`)
             .then(response => response.json())
             .then(response => callback(null, response))
             .catch(e => callback(e, null));
     }
 
     static fetchRestaurantById(id, callback) {
-        // fetch all restaurants with proper error handling.
-        DBHelper.fetchRestaurants((error, restaurants) => {
-            if (error) {
-                callback(error, null);
-            } else {
-                const restaurant = restaurants.find(r => r.id == id);
-                if (restaurant) { // Got the restaurant
-                    callback(null, restaurant);
-                } else { // Restaurant does not exist in the database
-                    callback('Restaurant does not exist', null);
-                }
-            }
-        });
+        fetch(DBHelper.DATABASE_URL + `/restaurants/${id}`)
+            .then(response => response.json())
+            .then(response => callback(null, response))
+            .catch(e => callback(e, null));
+    }
+
+    static fetchReviewsForRestaurantID(id, callback) {
+        return fetch(DBHelper.DATABASE_URL + `/reviews/?restaurant_id=${id}`, { method: 'GET' })
+            .then(response => response.json())
+            .then(reviews => callback(null, reviews))
+            .catch(e => callback(e, null));
     }
 
     /**
@@ -154,7 +152,7 @@ class DBHelper {
 
     static changeFavState(restaurant, newfavState) {
         let url = `http://localhost:1337/restaurants/${restaurant.id}/?is_favorite=${newfavState}`;
-        fetch(url, {method: 'PUT' });
+        fetch(url, { method: 'PUT' });
     }
 
 }
