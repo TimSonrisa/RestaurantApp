@@ -210,17 +210,17 @@ nav {
     }
 
 .det_button {
-        background-color: darkblue;
-        border-bottom: 3px solid #eee;
-        color: #fff;
-        display: inline-block;
-        font-size: 10pt;
-        margin: 10% 10% 0 10%;
-        padding: 8px 30px 10px;
-        text-align: center;
-        text-transform: uppercase;
-        width: 80%;
-    }
+    background-color: darkblue;
+    border-bottom: 3px solid #eee;
+    color: #fff;
+    display: inline-block;
+    font-size: 10pt;
+    margin: 10% 10% 0 10%;
+    padding: 8px 30px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80%;
+}
 
 .fav_button {
     background-color: darkblue;
@@ -233,6 +233,7 @@ nav {
     text-transform: uppercase;
     width: 20%;
 }
+
 .nonfav_button {
     background-color: darkblue;
     border-bottom: 3px solid #eee;
@@ -325,6 +326,23 @@ nav {
         margin: 3% 0 0 0;
     }
 
+#form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 3% 0 3% 0;
+    padding: 0;
+}
+
+#review-form {
+    border: 2px solid #fff;
+    width: 80%;
+}
+
+#review-text {
+    width: 80%;
+}
+
 #reviews-list {
     display: flex;
     flex-direction: column;
@@ -333,18 +351,18 @@ nav {
     padding: 0;
 }
 
-    #reviews-list li {
-        background-color: #fff;
-        border: 2px solid #f3f3f3;
-        display: block;
-        list-style-type: none;
-        overflow: hidden;
-        margin: 1%;
-        padding: 3%;
-        position: relative;
-        width: 80%;
-        min-height: 50%;
-    }
+#reviews-list li {
+    background-color: #fff;
+    border: 2px solid #f3f3f3;
+    display: block;
+    list-style-type: none;
+    overflow: hidden;
+    margin: 1%;
+    padding: 3%;
+    position: relative;
+    width: 80%;
+    min-height: 50%;
+}
 
         #reviews-list li p {
             margin: 0;
