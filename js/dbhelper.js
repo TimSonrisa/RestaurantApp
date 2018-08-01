@@ -36,15 +36,11 @@ class DBHelper {
             "comments": review.comments,
             "restaurant_id": parseInt(review.restaurant_id)
         };
-
-        return fetch(DBHelper.DATABASE_URL + `/reviews/`,
-            {
-                method: 'POST',
-                body: JSON.stringify(reviewSend),
-                headers: new Headers({
-                    'Content-Type': 'application/json'
-                })
-            })
+        return fetch(DBHelper.DATABASE_URL + `/reviews/`, {
+            method: 'POST',
+            body: JSON.stringify(reviewSend),
+            headers: new Headers({'Content-Type': 'application/json'})
+        })
     }
 
     /**
